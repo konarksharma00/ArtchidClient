@@ -1,0 +1,20 @@
+.sidebar-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar-header > div{
+    text-align: center;
+    border: 1px solid $nav-color;
+}
+
+.sidebar-header > div:hover{
+    color: $nav-background-color;
+    background-color: $shell-background-color;
+}
+
+.sidebar-feed{
+    background-color: #ededf2;
+    color: #343a40;
+    border: 1px solid #d6c417;
+}

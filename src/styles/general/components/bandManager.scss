@@ -1,0 +1,12 @@
+.bandmanager{
+    display: flex;
+    flex-direction: row;
+}
+
+.bandmanager > div{
+    text-align: center;
+}
+.bandmanager  button{
+    height: 26px;
+    font-size: 13px;
+}

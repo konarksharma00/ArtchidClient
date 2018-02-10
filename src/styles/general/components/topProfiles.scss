@@ -1,0 +1,19 @@
+.topProfile-name{
+    background-color: $nav-color;
+    color: $body-background-color;
+    text-align: center;
+}
+.topProfile-image{
+    border: solid $nav-color 2px;
+    background-color: $body-background-color;
+    padding: 4px;
+}
+.topProfile-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.topProfile-details > span {
+    padding: 0px 0px 0px 15px;
+    height: 38px;
+  }

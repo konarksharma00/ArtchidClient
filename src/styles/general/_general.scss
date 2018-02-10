@@ -1,0 +1,60 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: $font-size-regular;
+    font-weight: $font-weight-regular;
+    background-color: $body-background-color; 
+}
+
+.no-padding{
+    padding: 0!important;
+}
+
+// for every navigation or header elemnets
+
+.header{
+    background-color: $nav-background-color;
+    color: $nav-color;
+}
+
+// intented to be for all the buttons
+
+.artchid-btn{
+background-color: $body-background-color;
+color: $nav-color;
+border-radius: $btn-border-radius;
+border: $btn-border;
+text-align: $btn-align;
+width: $btn-width;
+}
+
+.artchid-btn:hover{
+    background-color:$nav-color;
+    color: $nav-background-color;
+}
+
+// brand logo and image
+
+.brand-logo{
+    border: $btn-border;
+    border-radius:50%;
+    padding: 2px 0px 4px 2px; 
+}
+
+.brand-name{
+    color:$nav-color!important;
+}
+
+//placeholder for all inputs
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    text-align: $placeholder-text;
+   }
+   ::-moz-placeholder { /* Firefox 19+ */
+    text-align: $placeholder-text;
+   }
+   :-ms-input-placeholder { /* IE 10+ */
+    text-align: $placeholder-text;
+   }
+   :-moz-placeholder { /* Firefox 18- */
+    text-align: $placeholder-text;
+   }

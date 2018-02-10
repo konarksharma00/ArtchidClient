@@ -1,0 +1,23 @@
+.searchBox{
+    text-align: center; 
+}
+
+.searchBox--label{
+    margin: 0;
+}
+
+.searchBox--input{
+    width: 80%;
+    border-radius: $btn-border-radius;
+    outline: none;
+    border: none;
+    height: 30px;
+    color:$nav-background-color; 
+}
+
+.searchBox--icon{
+    color: $nav-background-color;
+    font-size: 35px;
+    position: absolute;
+    margin: 5px 0px 0px 10px;
+}
