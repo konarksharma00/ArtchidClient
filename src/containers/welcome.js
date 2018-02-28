@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
 
-import NavHeader from '../components/navHeader';
+import NavHeader from '../containers/navHeader';
 import SiteFooter from '../components/footer';
 import Shell from '../components/shell';
 import UserUtils from '../components/usersUtils';
@@ -13,6 +13,9 @@ import BandManager from '../components/bandManager';
 // component would only be called once, need to set the api first
 
 class Welcome extends Component {
+    constructor() {
+        super();
+      }
     render(){
         return (
             <div>

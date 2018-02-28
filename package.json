@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "",
   "scripts": {
-    "start": "webpack-dev-server --watch",
+    "start": "webpack && webpack-dev-server --watch",
     "build": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +26,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-1": "^6.1.18",
     "bootstrap": "^4.0.0",
@@ -35,11 +36,12 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-ionicons": "^2.1.6",
+    "react-modal": "^3.3.1",
     "react-popup": "^0.8.0",
     "react-redux": "^5.0.6",
     "react-router": "^2.0.1",
     "react-router-dom": "^4.0.0",
-    "redux": "^3.0.4",
+    "redux": "3.7.2",
     "redux-form": "^7.1.1",
     "redux-promise": "^0.5.3",
     "style-loader": "^0.20.1",

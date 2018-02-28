@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Welcome from '../containers/Welcome';
