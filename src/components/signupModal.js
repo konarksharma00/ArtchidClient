@@ -32,7 +32,7 @@ const SignupModal = (props)=>{
     )
 };
 
-function mapStateToProps(state){
+function mapStateToProps({sampleData}){
     return {sampleData:'state.posts'}
 }
 

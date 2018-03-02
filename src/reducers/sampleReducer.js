@@ -1,3 +1,13 @@
+import { CONN_TEST } from '../actions';
+
 export default function(state ={} ,action){
-      return state
+  switch (action.type){
+    case CONN_TEST:
+          return {
+            ...state, 'msg':action.payload.data
+          }
+        break;
+    default:
+    return state;
   }
+}

@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Ionicon from 'react-ionicons';
 import Popup from 'react-popup';
+import { connect } from 'react-redux';
 
 import SignupModal from '../components/signupModal';
+import { connTest } from '../actions';
 
 class NavHeader extends Component {
     constructor(props) {
@@ -19,6 +21,11 @@ class NavHeader extends Component {
                 modalOpen: !prevState.modalOpen
             };
         });
+    }
+
+    componentDidMount(){
+        this.props.connTest();
+        console.log(this.props.NewConnectionMsg);
     }
 
     render(){
@@ -83,5 +90,10 @@ class NavHeader extends Component {
         )
     }
 }
-export default NavHeader;
+
+function mapStateToProps({sampleData}){
+    return { NewConnectionMsg:sampleData }
+}
+
+export default connect(mapStateToProps, { connTest })(NavHeader);
 

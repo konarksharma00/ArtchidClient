@@ -1,12 +1,8 @@
-import { createStore, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import  SampleReducer from './sampleReducer';
 
-export default () => {
-  const rootReducer = createStore(
-    combineReducers({
-        sampleData:SampleReducer
-    })
-  );
+const rootReducer = combineReducers({
+  sampleData:SampleReducer
+});    
 
-  return rootReducer;
-};
+export default rootReducer;

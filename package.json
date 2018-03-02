@@ -9,6 +9,7 @@
     "build": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "proxy": "http://localhost:7777/api/user/signup",
   "author": "thekonark",
   "license": "ISC",
   "devDependencies": {
