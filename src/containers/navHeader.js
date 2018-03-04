@@ -25,7 +25,6 @@ class NavHeader extends Component {
 
     componentDidMount(){
         this.props.connTest();
-        console.log(this.props.NewConnectionMsg);
     }
 
     render(){
@@ -43,13 +42,14 @@ class NavHeader extends Component {
                             </span>                          
                             <span className="col-xs-6">
                                 <Link className="navbar-brand brand-name" to="/">
-                                    Artchid
+                                    Artchid 
                                 </Link> 
                             </span>
                         </div>
                         <div className="col-xs-2">
                             <ul className="nav navbar-nav">
                                 <li>An Orchid For Artists</li>
+                                {/* <li>{!!this.props.NewConnectionMsg ? this.props.NewConnectionMsg : 'server is down'}</li> */}
                             </ul>
                         </div>
                         <div className="col-xs-5 searchBox">
@@ -92,7 +92,7 @@ class NavHeader extends Component {
 }
 
 function mapStateToProps({sampleData}){
-    return { NewConnectionMsg:sampleData }
+    return { NewConnectionMsg:sampleData.msg }
 }
 
 export default connect(mapStateToProps, { connTest })(NavHeader);

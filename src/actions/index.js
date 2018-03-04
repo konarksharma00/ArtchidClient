@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const CONN_TEST = 'connTest';
+export const SIGNUP = 'signup';
 
 const rootUrl = 'http://localhost:7777/api';
 
@@ -9,6 +10,15 @@ export function connTest(){
     const request = axios.get(`${rootUrl}/connTest`);
     return {
         type :CONN_TEST,
+        payload : request
+    }
+}
+
+export function signup(values){
+    event.stopPropagation()
+    const request = axios.post(`${rootUrl}/user/signup`, values);
+    return {
+        type :SIGNUP,
         payload : request
     }
 }
