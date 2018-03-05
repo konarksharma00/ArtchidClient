@@ -4,7 +4,7 @@ import Ionicon from 'react-ionicons';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';
 
-import SignupModal from '../components/signupModal';
+import SignupModal from '../components/modalShell';
 import { connTest } from '../actions';
 
 class NavHeader extends Component {
