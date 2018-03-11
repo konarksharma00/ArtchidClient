@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router-dom';
+import ReactDom, { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Popup from 'react-popup';
 
 import { signup } from '../actions';
 
 class SignupForm extends Component {
-
     //rendering form elements 
     renderField(field) {
         return (
@@ -23,58 +23,65 @@ class SignupForm extends Component {
             </div>
         )
     }
-
     // sign up submissional fuction
-    onSubmit(values) {
-        // console.log(values);
-        this.props.signup(values);
-    }
+    onSubmit(values){
+        this.props.signup(values, (e)=>{
+          if(this.props.isSignupSuccesfull){
+            this.props.history.push('/profile')
+        } else {
+            console.log('signup failed')
+        }
+        });
+      }
 
     render() {
         const { handleSubmit, pristine, submitting } = this.props;
         return (
             <div className="col-xs-12 pull-xs-right no-padding">
-                <div className="col-xs-12 header">
+                <Popup />
+                <div className="col-xs-12 header" style={{textAlign:"center"}}>
                     <h3>Welcome to the family</h3>
                 </div>
-                <div className="col-xs-6" style={{ borderRight: "1px dotted #b1b5b9" }}>
-                    <h5>Login using</h5>
-                    <button className="col-xs-8 btn btn-primary facebook-btn  artchid-btn">Facebook</button>
-                    <button className="btn btn-primary twitter-btn  artchid-btn">Twitter</button>
-                    <button className="col-xs-8 btn btn-primary google-btn  artchid-btn">Google</button>
-                </div>
-                <div className="col-xs-6">
-                    <form
-                        onSubmit={handleSubmit(this.onSubmit.bind(this))}
-                    >
-                        <Field
-                            name="name"
-                            label="Name"
-                            type="text"
-                            component={this.renderField}
-                        ></Field>
-                        <Field
-                            name="email"
-                            label="Email"
-                            type="email"
-                            component={this.renderField}
-                        ></Field>
-                        <Field
-                            name="password"
-                            label="Password"
-                            type="password"
-                            component={this.renderField}
+                <div className="col-xs-12" style={{padding:"15px"}}>
+                    <div className="col-xs-6" style={{ borderRight: "1px dotted #b1b5b9" }}>
+                        <label className="col-xs-12" style={{textAlign:"center"}}>Signup With</label>
+                        <button className="btn btn-primary facebook-btn facebook-btn-image  artchid-btn">Facebook</button>
+                        <button className="btn btn-primary twitter-btn twitter-btn-image  artchid-btn">Twitter</button>
+                        <button className="btn btn-primary google-btn google-btn-image  artchid-btn">Google</button>
+                    </div>
+                    <div className="col-xs-6">
+                        <form
+                            onSubmit={handleSubmit(this.onSubmit.bind(this))}
                         >
-                        </Field>
-                        <button type="submit"
-                            className="btn btn-primary artchid-btn"
-                            disabled={pristine || submitting}
-                        >
-                            sign up
-                        </button>
-                    </form>
+                            <Field
+                                name="name"
+                                label="Name"
+                                type="text"
+                                component={this.renderField}
+                            ></Field>
+                            <Field
+                                name="email"
+                                label="Email"
+                                type="email"
+                                component={this.renderField}
+                            ></Field>
+                            <Field
+                                name="password"
+                                label="Password"
+                                type="password"
+                                component={this.renderField}
+                            >
+                            </Field>
+                            <button type="submit"
+                                className="btn btn-primary artchid-btn"
+                                disabled={pristine || submitting}
+                            >
+                                Sign Up
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <div className="col-xs-12">
+                <div className="col-xs-12 auth-footer">
                     Already a user <Link to="/">Log In</Link>
                 </div>
             </div>
@@ -99,12 +106,12 @@ function validate(values) {
   };
 
 // we will extract token from here as well later
-function mapStateToProps({signupData}){
-    return { isSignupSuccesfull: !!signupData._id ? true : false }
+function mapStateToProps({userAuthData}){
+    return { isSignupSuccesfull: !!userAuthData._id }
 }  
 
 export default reduxForm({
     validate,
     form:'SignupForm'
-})(connect(mapStateToProps, { signup })(SignupForm));
+})(withRouter(connect(mapStateToProps, { signup })(SignupForm)));
 

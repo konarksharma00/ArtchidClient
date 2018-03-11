@@ -13,9 +13,10 @@ import BandManager from '../components/bandManager';
 // component would only be called once, need to set the api first
 
 class Welcome extends Component {
-    constructor() {
-        super();
-      }
+    componentDidMount(){
+        console.log(this.props)
+    }
+
     render(){
         return (
             <div>

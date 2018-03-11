@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import { withRouter } from 'react-router-dom';
 
 import SignupForm from '../containers/signupForm';
+import LoginForm from '../containers/loginForm';
 
 // custom styles for modal, can be moved in dedicated file later
 const customStyles = {
@@ -20,19 +22,29 @@ const customStyles = {
 
   };
 
-const SignupModal = function(props) {
+const ModalShell = function(props) {
+    const { match, location, history } = props
+    console.log(props.history.location.pathname)
+    
+    function userAction(){
+        if (props.history.location.pathname==='/signup'){
+            return <SignupForm />
+        } else {
+            return <LoginForm />
+        }
+    }
         return(
             <Modal
             isOpen={!!props.selectedOptions}
-            onRequestClose={props.onSignUpClick}
+            onRequestClose={props.userAction}
             contentLabel="selected option"
             ariaHideApp={false}
             className="col-xs-7 col-xs-offset-2"
             style={customStyles}
         >
-        <SignupForm />
+        {userAction()}
         </Modal>
         )
 }
 
-export default SignupModal;
+export default withRouter(ModalShell);

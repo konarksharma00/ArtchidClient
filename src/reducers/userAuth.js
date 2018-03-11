@@ -1,4 +1,4 @@
-import { SIGNUP } from '../actions';
+import { SIGNUP, LOGIN } from '../actions';
 
 export default function(state ={} ,action){
   switch (action.type){
@@ -7,6 +7,11 @@ export default function(state ={} ,action){
             ...state, 'response':action.payload
           }
         break;
+    case LOGIN:
+          return{
+            ...state, 'response':action.payload
+          }
+        break  
     default:
     return state;
   }

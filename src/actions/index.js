@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const CONN_TEST = 'connTest';
 export const SIGNUP = 'signup';
+export const LOGIN = 'login';
 
 const rootUrl = 'http://localhost:7777/api';
 
@@ -14,11 +15,29 @@ export function connTest(){
     }
 }
 
-export function signup(values){
+export function signup(values, cb){
     event.stopPropagation()
-    const request = axios.post(`${rootUrl}/user/signup`, values);
+    const request = axios.post(`${rootUrl}/user/signup`, values).then(
+        ()=>cb()
+    ).catch((e)=>{
+        cb(e)
+    });
+
     return {
         type :SIGNUP,
+        payload : request
+    }
+}
+
+export function login(values, cb){
+    event.stopPropagation()
+    const request = axios.post(`${rootUrl}/user/login`, values).then(
+        ()=>cb()
+    ).catch((e)=>{
+        cb(e)
+    })
+    return {
+        type :LOGIN,
         payload : request
     }
 }

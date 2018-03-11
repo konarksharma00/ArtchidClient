@@ -62,25 +62,43 @@ width: $btn-width;
 }
 
 .facebook-btn{
-    background: $facebook-color!important;
-    color:$body-background-color!important;
+    background-color: $facebook-color!important;
+    color:$body-background-color;
     border: 1px solid #ced4da!important;
-    margin-bottom: 48px!important;
-    box-shadow: 0px 4px 8px 2px #cccecf!important;
+    margin-bottom: 48px;
+    box-shadow: 0px 4px 8px 2px #cccecf;
+}
+
+.facebook-btn-image{
+    background-image: url(#{$assetPath}/fbLogo.png)!important;
+    background-size: 30px!important;
+    background-repeat: no-repeat!important;
 }
 
 .twitter-btn{
-    background: $twitter-color!important;
-    color:$body-background-color!important;
+    background-color: $twitter-color!important;
+    color:$body-background-color;
     border: 1px solid #ced4da!important;
-    margin-bottom: 48px!important;
-    box-shadow: 0px 4px 8px 2px #cccecf!important;
+    margin-bottom: 48px;
+    box-shadow: 0px 4px 8px 2px #cccecf;
+}
+
+.twitter-btn-image{
+    background-image: url(#{$assetPath}/twitterLogo.png)!important;
+    background-size: 40px!important;
+    background-repeat: no-repeat!important;
 }
 
 .google-btn{
-    background: $body-background-color!important;
-    color:$nav-background-color!important; 
+    background-color: $google-color!important;
+    color:$nav-background-color; 
     border: 1px solid #ced4da!important;
-    margin-bottom: 48px!important;
-    box-shadow: 0px 4px 8px 2px #cccecf!important;
+    margin-bottom: 48px;
+    box-shadow: 0px 4px 8px 2px #cccecf;
+}
+
+.google-btn-image{
+    background-image: url(#{$assetPath}/googleLogo.png)!important;
+    background-size: 50px!important;
+    background-repeat: no-repeat!important;
 }

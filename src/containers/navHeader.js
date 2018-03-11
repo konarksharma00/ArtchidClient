@@ -4,18 +4,18 @@ import Ionicon from 'react-ionicons';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';
 
-import SignupModal from '../components/modalShell';
+import ModalShell from '../components/modalShell';
 import { connTest } from '../actions';
 
 class NavHeader extends Component {
     constructor(props) {
         super(props);
-        this.onSignUpClick = this.onSignUpClick.bind(this);
+        this.userAction = this.userAction.bind(this);
         this.state = {
           modalOpen: false
         };
       }
-    onSignUpClick (){
+    userAction (){
         this.setState((prevState) => {
             return {
                 modalOpen: !prevState.modalOpen
@@ -30,9 +30,9 @@ class NavHeader extends Component {
     render(){
         return(
             <div>
-                <SignupModal
+                <ModalShell
                     selectedOptions={this.state.modalOpen}
-                    onSignUpClick={this.onSignUpClick}
+                    userAction={this.userAction}
                 />
                 <nav className="navbar navbar-expand-sm bg-dark">
                     <div className="container-fluid navbar-expand-sm header col-xs-12">
@@ -70,15 +70,16 @@ class NavHeader extends Component {
                                 <Link
                                     to="/signup"
                                     className="btn io artchid-btn"
-                                    onClick={this.onSignUpClick}
+                                    onClick={this.userAction}
                                         >
                                         Sign Up
                                 </Link>
                             </div>
                             <div className="nav navbar-nav col-xs-6">
                                 <Link
-                                to="/signup"
+                                to="/login"
                                 className="btn io artchid-btn"
+                                onClick={this.userAction}
                                 >
                                         Login
                                 </Link>

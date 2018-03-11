@@ -18,9 +18,14 @@ module.exports = {
             use:[
                 'style-loader',
                 'css-loader',
-                'sass-loader'
+                'sass-loader',
             ] 
-        }]
+        },{
+            loader: 'file-loader',
+            test: /\.(png|jpg)$/,
+            include: path.join(__dirname,'src/assets')
+        }
+    ]
     },
     devServer: {
         historyApiFallback: true,
