@@ -29,6 +29,7 @@ class SignupForm extends Component {
           if(this.props.isSignupSuccesfull){
             this.props.history.push('/profile')
         } else {
+            // need to return error component here, just above the submit button
             console.log('signup failed')
         }
         });

@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from '../assets/images/artchidLogo.png';
 
 const TopProfiles = function(props){
     return(

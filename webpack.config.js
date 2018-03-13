@@ -21,8 +21,11 @@ module.exports = {
                 'sass-loader',
             ] 
         },{
-            loader: 'file-loader',
-            test: /\.(png|jpg)$/,
+            test: /\.(png|jpg|gif|svg)$/,
+            use:[
+                'file-loader?name=[path][name].[ext]',
+                'image-webpack-loader'
+            ],
             include: path.join(__dirname,'src/assets')
         }
     ]

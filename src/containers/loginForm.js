@@ -30,8 +30,8 @@ class LoginForm extends Component {
             if(this.props.isLoginSuccesfull){
                 this.props.history.push('/profile')
             } else {
-                this.props.history.push('/profile')
-                // console.log('login failed')
+                // need to return error component here, just above the submit button
+                console.log('login failed')
             }
         });
       }

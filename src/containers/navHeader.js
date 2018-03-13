@@ -1,21 +1,26 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import Ionicon from 'react-ionicons';
 import Popup from 'react-popup';
 import { connect } from 'react-redux';
 
 import ModalShell from '../components/modalShell';
 import { connTest } from '../actions';
+import UserAuthButtons from '../components/userAuthButtons';
+import UserControl from '../components/userControl';
 
 class NavHeader extends Component {
     constructor(props) {
         super(props);
         this.userAction = this.userAction.bind(this);
         this.state = {
-          modalOpen: false
-        };
-      }
-    userAction (){
+            modalOpen: false,
+            isNewUser: false
+
+        };  
+    }
+
+    userAction() {
         this.setState((prevState) => {
             return {
                 modalOpen: !prevState.modalOpen
@@ -23,12 +28,18 @@ class NavHeader extends Component {
         });
     }
 
-    componentDidMount(){
+    componentWillMount() {
         this.props.connTest();
+        const { pathname } = this.props.location; 
+        if (pathname==='/signup' || pathname==='/login' || pathname=== '/'){
+            this.setState({isNewUser: true})
+        }
     }
-
-    render(){
-        return(
+    render() {
+        let userAuthButtons = null;
+        this.state.isNewUser ? userAuthButtons = <UserAuthButtons userAction={this.userAction} />  
+        : userAuthButtons = <UserControl />;
+        return (
             <div>
                 <ModalShell
                     selectedOptions={this.state.modalOpen}
@@ -38,12 +49,12 @@ class NavHeader extends Component {
                     <div className="container-fluid navbar-expand-sm header col-xs-12">
                         <div className="navbar-header col-xs-2">
                             <span className="col-xs-4 brand-logo">
-                                <img src={'src/assets/images/logo.png'} alt="logo"/>
-                            </span>                          
+                                <img src={'src/assets/images/logo.png'} alt="logo" />
+                            </span>
                             <span className="col-xs-6">
                                 <Link className="navbar-brand brand-name" to="/">
-                                    Artchid 
-                                </Link> 
+                                    Artchid
+                                </Link>
                             </span>
                         </div>
                         <div className="col-xs-2">
@@ -57,34 +68,15 @@ class NavHeader extends Component {
                                 Learn an instrument
                             </label>
                             <div className="inner-addon right-addon">
-                            <Ionicon icon="ios-search" className="searchBox--icon"/>
+                                <Ionicon icon="ios-search" className="searchBox--icon" />
                                 <input
-                                    type="text" 
+                                    type="text"
                                     placeholder="Search Instruments"
                                     className="searchBox--input"
                                 />
                             </div>
                         </div>
-                        <div className="col-xs-3">
-                            <div className="nav navbar-nav col-xs-6">
-                                <Link
-                                    to="/signup"
-                                    className="btn io artchid-btn"
-                                    onClick={this.userAction}
-                                        >
-                                        Sign Up
-                                </Link>
-                            </div>
-                            <div className="nav navbar-nav col-xs-6">
-                                <Link
-                                to="/login"
-                                className="btn io artchid-btn"
-                                onClick={this.userAction}
-                                >
-                                        Login
-                                </Link>
-                            </div>
-                        </div>
+                        {userAuthButtons}
                     </div>
                 </nav>
             </div>
@@ -92,9 +84,9 @@ class NavHeader extends Component {
     }
 }
 
-function mapStateToProps({sampleData}){
-    return { NewConnectionMsg:sampleData.msg }
+function mapStateToProps({ sampleData }) {
+    return { NewConnectionMsg: sampleData.msg }
 }
 
-export default connect(mapStateToProps, { connTest })(NavHeader);
+export default withRouter(connect(mapStateToProps, { connTest })(NavHeader));
 
