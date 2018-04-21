@@ -18,7 +18,11 @@ export function connTest(){
 export function signup(values, cb){
     event.stopPropagation()
     const request = axios.post(`${rootUrl}/user/signup`, values).then(
-        ()=>cb()
+        (response)=>{
+            if (response.status == 200){
+                cb(response)
+            }
+        }
     ).catch((e)=>{
         cb(e)
     });

@@ -2202,8 +2202,10 @@ function connTest() {
 
 function signup(values, cb) {
     event.stopPropagation();
-    var request = _axios2.default.post(rootUrl + '/user/signup', values).then(function () {
-        return cb();
+    var request = _axios2.default.post(rootUrl + '/user/signup', values).then(function (response) {
+        if (response.status == 200) {
+            cb(response);
+        }
     }).catch(function (e) {
         cb(e);
     });
@@ -66028,7 +66030,7 @@ function validate(values) {
 function mapStateToProps(_ref) {
     var userAuthData = _ref.userAuthData;
 
-    return { isSignupSuccesfull: !!userAuthData._id };
+    return { isSignupSuccesfull: userAuthData.status == 200 };
 }
 
 exports.default = (0, _reduxForm.reduxForm)({

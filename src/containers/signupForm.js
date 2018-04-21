@@ -108,11 +108,10 @@ function validate(values) {
 
 // we will extract token from here as well later
 function mapStateToProps({userAuthData}){
-    return { isSignupSuccesfull: !!userAuthData._id }
+    return { isSignupSuccesfull: (userAuthData.status == 200) }
 }  
 
 export default reduxForm({
     validate,
     form:'SignupForm'
 })(withRouter(connect(mapStateToProps, { signup })(SignupForm)));
-
