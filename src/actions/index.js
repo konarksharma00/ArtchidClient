@@ -15,36 +15,50 @@ export function connTest(){
     }
 }
 
-export function signup(values, cb){
-    event.stopPropagation()
-    const request = axios.post(`${rootUrl}/user/signup`, values).then(
-        (response)=>{
-            if (response.status == 200){
-                cb(response)
-            }
-        }
-    ).catch((e)=>{
-        cb(e)
-    });
-
+export function signup(values){
     return {
         type :SIGNUP,
-        payload : request
+        payload : values
     }
 }
 
-export function login(values, cb){
-    event.stopPropagation()
-    const request = axios.post(`${rootUrl}/user/login`, values).then(
-        ()=>cb()
-    ).catch((e)=>{
-        cb(e)
-    })
+// export function signup(values, cb){
+//     event.stopPropagation()
+//     const request = axios.post(`${rootUrl}/user/signup`, values).then(
+//         (response)=>{
+//             if (response.status == 200){
+//                 cb(response)
+//             }
+//         }
+//     ).catch((e)=>{
+//         cb(e)
+//     });
+
+//     return {
+//         type :SIGNUP,
+//         payload : request
+//     }
+// }
+
+export function login(values){
     return {
         type :LOGIN,
-        payload : request
+        payload : values
     }
 }
+
+// export function login(values, cb){
+//     event.stopPropagation()
+//     const request = axios.post(`${rootUrl}/user/login`, values).then(
+//         ()=>cb()
+//     ).catch((e)=>{
+//         cb(e)
+//     })
+//     return {
+//         type :LOGIN,
+//         payload : request
+//     }
+// }
 
 // Reliable API testing source in your local server is not set yet
 

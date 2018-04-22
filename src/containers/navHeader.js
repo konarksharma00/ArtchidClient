@@ -5,7 +5,7 @@ import Popup from 'react-popup';
 import { connect } from 'react-redux';
 
 import ModalShell from '../components/modalShell';
-import { connTest } from '../actions';
+// import { connTest } from '../actions';
 import UserAuthButtons from '../components/userAuthButtons';
 import UserControl from '../components/userControl';
 
@@ -29,7 +29,8 @@ class NavHeader extends Component {
     }
 
     componentWillMount() {
-        this.props.connTest();
+        // this.props.connTest();
+        console.log(this.props.sampleData);
         const { pathname } = this.props.location; 
         if (pathname==='/signup' || pathname==='/login' || pathname=== '/'){
             this.setState({isNewUser: true})
@@ -85,8 +86,8 @@ class NavHeader extends Component {
 }
 
 function mapStateToProps({ sampleData }) {
-    return { NewConnectionMsg: sampleData.msg }
+    return { NewConnectionMsg: sampleData }
 }
 
-export default withRouter(connect(mapStateToProps, { connTest })(NavHeader));
+export default withRouter(connect(mapStateToProps)(NavHeader));
 

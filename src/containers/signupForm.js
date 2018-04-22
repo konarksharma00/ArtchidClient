@@ -24,28 +24,28 @@ class SignupForm extends Component {
         )
     }
     // sign up submissional fuction
-    onSubmit(values){
-        this.props.signup(values, (e)=>{
-          if(this.props.isSignupSuccesfull){
-            this.props.history.push('/profile')
-        } else {
-            // need to return error component here, just above the submit button
-            console.log('signup failed')
-        }
+    onSubmit(values) {
+        this.props.signup(values).then((e) => {
+            if (this.props.isSignupSuccesfull) {
+                this.props.history.push('/profile')
+            } else {
+                // need to return error component here, just above the submit button
+                console.log('signup failed')
+            }
         });
-      }
+    }
 
     render() {
         const { handleSubmit, pristine, submitting } = this.props;
         return (
             <div className="col-xs-12 pull-xs-right no-padding">
                 <Popup />
-                <div className="col-xs-12 header" style={{textAlign:"center"}}>
+                <div className="col-xs-12 header" style={{ textAlign: "center" }}>
                     <h3>Welcome to the family</h3>
                 </div>
-                <div className="col-xs-12" style={{padding:"15px"}}>
+                <div className="col-xs-12" style={{ padding: "15px" }}>
                     <div className="col-xs-6" style={{ borderRight: "1px dotted #b1b5b9" }}>
-                        <label className="col-xs-12" style={{textAlign:"center"}}>Signup With</label>
+                        <label className="col-xs-12" style={{ textAlign: "center" }}>Signup With</label>
                         <button className="btn btn-primary facebook-btn facebook-btn-image  artchid-btn">Facebook</button>
                         <button className="btn btn-primary twitter-btn twitter-btn-image  artchid-btn">Twitter</button>
                         <button className="btn btn-primary google-btn google-btn-image  artchid-btn">Google</button>
@@ -88,30 +88,30 @@ class SignupForm extends Component {
             </div>
         )
     }
-    
+
 }
 function validate(values) {
     console.log(values)
     const errors = {}
-    if(!values.name || (values.name ? values.name.length <=3 : false)){
-      errors.name ="Name is not valid"
+    if (!values.name || (values.name ? values.name.length <= 3 : false)) {
+        errors.name = "Name is not valid"
     }
-    if(!values.email || (values.email ? values.email.length <=3 : false)){
-      errors.email ="Email is not valid"
+    if (!values.email || (values.email ? values.email.length <= 3 : false)) {
+        errors.email = "Email is not valid"
     }
-    if(!values.password || (values.password ? values.password.length <=3 : false)){
-      errors.password ="Password is not valid"
+    if (!values.password || (values.password ? values.password.length <= 3 : false)) {
+        errors.password = "Password is not valid"
     }
-  
+
     return errors
-  };
+};
 
 // we will extract token from here as well later
-function mapStateToProps({userAuthData}){
-    return { isSignupSuccesfull: (userAuthData.status == 200) }
-}  
+function mapStateToProps({ userAuthData }) {
+    return { isSignupSuccesfull: (userAuthData.status == 201) }
+}
 
 export default reduxForm({
     validate,
-    form:'SignupForm'
+    form: 'SignupForm'
 })(withRouter(connect(mapStateToProps, { signup })(SignupForm)));

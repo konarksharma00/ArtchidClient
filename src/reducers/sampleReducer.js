@@ -4,7 +4,7 @@ export default function(state ={} ,action){
   switch (action.type){
     case CONN_TEST:
           return {
-            ...state, 'msg':action.payload.data
+            ...state, 'response':action.response
           }
         break;
     default:
