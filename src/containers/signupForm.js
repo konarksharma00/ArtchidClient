@@ -23,16 +23,22 @@ class SignupForm extends Component {
             </div>
         )
     }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log(nextProps);
+    }
+    
     // sign up submissional fuction
     onSubmit(values) {
-        this.props.signup(values).then((e) => {
-            if (this.props.isSignupSuccesfull) {
-                this.props.history.push('/profile')
-            } else {
-                // need to return error component here, just above the submit button
-                console.log('signup failed')
-            }
-        });
+        this.props.signup(values)
+        // .then((e) => {
+        //     if (this.props.isSignupSuccesfull) {
+        //         this.props.history.push('/profile')
+        //     } else {
+        //         // need to return error component here, just above the submit button
+        //         console.log('signup failed')
+        //     }
+        // });
     }
 
     render() {
@@ -91,7 +97,6 @@ class SignupForm extends Component {
 
 }
 function validate(values) {
-    console.log(values)
     const errors = {}
     if (!values.name || (values.name ? values.name.length <= 3 : false)) {
         errors.name = "Name is not valid"
@@ -107,8 +112,9 @@ function validate(values) {
 };
 
 // we will extract token from here as well later
-function mapStateToProps({ userAuthData }) {
-    return { isSignupSuccesfull: (userAuthData.status == 201) }
+function mapStateToProps({ userAuthReducer }) {
+    // return { isSignupSuccesfull: (userAuthReducer.status == 201) }
+    return { isSignupSuccesfull: (userAuthReducer.response ? true : false) }
 }
 
 export default reduxForm({

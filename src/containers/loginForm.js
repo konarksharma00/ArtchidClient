@@ -24,6 +24,10 @@ class LoginForm extends Component {
         )
     }
 
+    componentWillUpdate(nextProps, nextState) {
+        console.log(nextProps);
+    }
+
     // login submissional fuction
     onSubmit(values){
         this.props.login(values, (e)=>{
@@ -90,8 +94,9 @@ function validate(values) {
   };
 
 // we will extract token from here as well later
-function mapStateToProps({userAuthData}){
-    return { isLoginSuccesfull: userAuthData.data == 'succes' ? true : false }
+function mapStateToProps({userAuthReducer}){
+    // return { isLoginSuccesfull: userAuthReducer.data == 'succes' ? true : false }
+    return { isLoginSuccesfull: (userAuthReducer.response ? true : false) }
 }  
 
 export default reduxForm({

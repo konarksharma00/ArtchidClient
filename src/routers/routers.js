@@ -7,20 +7,23 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { IndexRoute } from 'react-router';
 import 'normalize.css/normalize.css';
 
-import rootReducer from '../reducers';
+import { getStore } from '../getStore';
+import rootReducer from '../combineReducers';
 import '../styles/styles.scss';
 import Welcome from '../containers/Welcome';
 import MyProfile from '../components/myProfile';
 import { initSagas } from '../initSagas';
 
-const sagaMiddleware = createSagaMiddleware()
+// const sagaMiddleware = createSagaMiddleware()
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(sagaMiddleware)
-)
+const store = getStore();
 
-initSagas(sagaMiddleware);
+// const store = createStore(
+//   rootReducer,
+//   applyMiddleware(sagaMiddleware)
+// )
+
+// initSagas(sagaMiddleware);
 
 class Routers extends Component {
   constructor(props){

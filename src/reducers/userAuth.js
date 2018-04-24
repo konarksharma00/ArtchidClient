@@ -1,6 +1,6 @@
 import { SIGNUP, LOGIN } from '../actions';
 
-export default function(state ={} ,action){
+export const userAuthReducer = function(state ={} ,action){
   switch (action.type){
     case 'signupdone':
           return {
