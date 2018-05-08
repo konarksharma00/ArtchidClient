@@ -1,7 +1,4 @@
-import { fromJS } from 'immutable'
-
-export const defaultState = fromJS({
-	form:[],
-	sampleData:[],
-	userAuthReducer:[]
-});
+export const defaultState = {
+	sampleData:{},
+	userAuthReducer:{}
+};

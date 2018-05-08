@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Popup from 'react-popup';
 
 import { signup } from '../actions';
+import { userAuthSelector } from '.././selectors'
 
 class SignupForm extends Component {
     //rendering form elements 
@@ -25,20 +26,17 @@ class SignupForm extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        console.log(nextProps);
+        if (nextProps.isSignupSuccesfull) {
+            this.props.history.push('/profile')
+        } else {
+             // need to return error component here, just above the submit button
+             console.log('signup failed')
+        };
     }
     
     // sign up submissional fuction
     onSubmit(values) {
         this.props.signup(values)
-        // .then((e) => {
-        //     if (this.props.isSignupSuccesfull) {
-        //         this.props.history.push('/profile')
-        //     } else {
-        //         // need to return error component here, just above the submit button
-        //         console.log('signup failed')
-        //     }
-        // });
     }
 
     render() {
@@ -112,9 +110,10 @@ function validate(values) {
 };
 
 // we will extract token from here as well later
-function mapStateToProps({ userAuthReducer }) {
-    // return { isSignupSuccesfull: (userAuthReducer.status == 201) }
-    return { isSignupSuccesfull: (userAuthReducer.response ? true : false) }
+function mapStateToProps(state) {
+    const {status , data} = userAuthSelector(state)
+    return { isSignupSuccesfull: status }
+    // return { isSignupSuccesfull: (userAuthReducer.response ? true : false) }
 }
 
 export default reduxForm({

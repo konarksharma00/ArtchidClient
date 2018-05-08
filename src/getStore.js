@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 
 import { initSagas } from './initSagas';
 import reducer from './combineReducers';
-// import { defaultState } from './defaultState';
+import { defaultState } from './defaultState';
 
 export const getStore = ()=>{
     const sagaMiddleware = createSagaMiddleware();
@@ -19,7 +19,8 @@ export const getStore = ()=>{
         ... composables
 );
     const store = createStore(
-        reducer,
+		reducer,
+		defaultState,
         enhancer,
     );
     initSagas(sagaMiddleware);
