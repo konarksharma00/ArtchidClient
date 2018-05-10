@@ -7,7 +7,8 @@ import axios from 'axios';
 
 export function* fetchData() {
   try {
-     const response = yield axios.get(`${rootUrl}/posts${apiKey}`)
+    const response = yield axios.get('/api/v1/todos');
+    //  const response = yield axios.get(`${rootUrl}/posts${apiKey}`)
      console.log('fetch sagas!')
      yield put({type: "connTest", response})
   } catch (error) {

@@ -22,10 +22,10 @@ module.exports = {
                 'sass-loader',
             ] 
         },{
-            test: /\.(png|jpg|gif|svg)$/,
+            test: /\.(png|jpg|gif|svg|jpeg)$/,
             use:[
                 'file-loader?name=[path][name].[ext]',
-                'image-webpack-loader'
+                // 'image-webpack-loader'
             ],
             include: path.join(__dirname,'src/assets')
         }
