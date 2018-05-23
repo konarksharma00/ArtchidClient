@@ -25,18 +25,22 @@ class SignupForm extends Component {
         )
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        if (nextProps.isSignupSuccesfull) {
-            this.props.history.push('/profile')
-        } else {
-             // need to return error component here, just above the submit button
-             console.log('signup failed')
-        };
-    }
+    // componentWillUpdate(nextProps, nextState) {
+    //     if (nextProps.isSignupSuccesfull) {
+    //         this.props.history.push('/profile')
+    //     } else {
+    //          // need to return error component here, just above the submit button
+    //          console.log('signup failed/ artchid server is not up**** hence faking signin')
+    //          this.props.history.push('/profile')
+    //     };
+    // }
     
     // sign up submissional fuction
     onSubmit(values) {
-        this.props.signup(values)
+        this.props.signup(values, (res)=>{
+            console.log(res)
+            this.props.history.push('/profile')
+        })
     }
 
     render() {
@@ -110,10 +114,10 @@ function validate(values) {
 };
 
 // we will extract token from here as well later
-function mapStateToProps(state) {
-    const {status , data} = userAuthSelector(state)
-    return { isSignupSuccesfull: status }
-    // return { isSignupSuccesfull: (userAuthReducer.response ? true : false) }
+function mapStateToProps({userAuthReducer}) {
+    // const {status , data} = userAuthSelector(state)
+    // return { isSignupSuccesfull: status }
+    return { isSignupSuccesfull: (userAuthReducer.response ? true : false) }
 }
 
 export default reduxForm({

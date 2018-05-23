@@ -2,7 +2,7 @@ import { SIGNUP, LOGIN } from '../actions';
 
 export const userAuthReducer = function(state ={} ,action){
   switch (action.type){
-    case 'signupdone':
+    case SIGNUP:
           return {
             ...state, 'response':action.payload
           }
