@@ -15,7 +15,7 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 ```
 > git clone https://github.com/konarksharma00/ArtchidClient.git
 > cd ArtchidClient
-> Yarn 'will install dependencies'
+> Yarn 'will install dependencies' {{make sure yarn is install in the system}}
 >Yarn build 'will build bundle js'
 > Yarn start Will start a webserver at port 8080
 ```
