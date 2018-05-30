@@ -34,6 +34,7 @@
     "babel-preset-stage-1": "^6.1.18",
     "bootstrap": "^4.1.1",
     "css-loader": "^0.28.11",
+    "express": "4.15.4",
     "immutable": "^3.8.2",
     "jest": "^20.0.4",
     "lodash": "^3.10.1",

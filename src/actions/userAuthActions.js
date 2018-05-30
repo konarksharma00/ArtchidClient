@@ -7,8 +7,8 @@ export const login = actionCreator(LOGIN,"values");
 
 const rootUrl = 'http://localhost:7777/api';
 export function signup(values, callBack){
-	// const payload = axios.post(`${rootUrl}/user/signup`, values)
-	const payload = axios.post('https://jsonplaceholder.typicode.com/posts', values)
+	const payload = axios.post(`${rootUrl}/user/signup`, values)
+	// const payload = axios.post('https://jsonplaceholder.typicode.com/posts', values)
 		.then((res)=>callBack(res))
 		.catch((err)=>{
 			console.log(err)

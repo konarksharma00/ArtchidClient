@@ -38,6 +38,7 @@ class SignupForm extends Component {
     // sign up submissional fuction
     onSubmit(values) {
         this.props.signup(values, (res)=>{
+            console.log(this.props.isSignupSuccesfull);
             console.log(res)
             this.props.history.push('/profile')
         })

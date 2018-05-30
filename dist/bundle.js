@@ -53894,8 +53894,9 @@ var login = exports.login = (0, _utils.actionCreator)(LOGIN, "values");
 
 var rootUrl = 'http://localhost:7777/api';
 function signup(values, callBack) {
-	// const payload = axios.post(`${rootUrl}/user/signup`, values)
-	var payload = _axios2.default.post('https://jsonplaceholder.typicode.com/posts', values).then(function (res) {
+	var payload = _axios2.default.post(rootUrl + '/user/signup', values)
+	// const payload = axios.post('https://jsonplaceholder.typicode.com/posts', values)
+	.then(function (res) {
 		return callBack(res);
 	}).catch(function (err) {
 		console.log(err);
@@ -76656,6 +76657,7 @@ var SignupForm = function (_Component) {
             var _this2 = this;
 
             this.props.signup(values, function (res) {
+                console.log(_this2.props.isSignupSuccesfull);
                 console.log(res);
                 _this2.props.history.push('/profile');
             });
