@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "",
   "scripts": {
-    "start": "webpack && webpack-dev-server && node run ./src/mocks",
+    "start": "webpack --watch | webpack-dev-server --watch",
     "build": "webpack --watch",
     "test": "jest"
   },
